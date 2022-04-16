@@ -1,0 +1,130 @@
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    04/20/2021  20:54:26  PAGE 1
+
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
+C:\KEIL_V5\C51\BIN\BL51.EXE .\Objects\STARTUP.obj, .\Objects\licznik_bitowy.obj TO .\Objects\licznik_czasu PRINT (.\List
+>> ings\licznik_czasu.m51) RAMSIZE (256)
+
+
+INPUT MODULES INCLUDED:
+  .\Objects\STARTUP.obj (?C_STARTUP)
+  .\Objects\licznik_bitowy.obj (LICZNIK_BITOWY)
+
+
+LINK MAP OF MODULE:  .\Objects\licznik_czasu (?C_STARTUP)
+
+
+            TYPE    BASE      LENGTH    RELOCATION   SEGMENT NAME
+            -----------------------------------------------------
+
+            * * * * * * *   D A T A   M E M O R Y   * * * * * * *
+            REG     0000H     0008H     ABSOLUTE     "REG BANK 0"
+            IDATA   0008H     0001H     UNIT         ?STACK
+
+            * * * * * * *   C O D E   M E M O R Y   * * * * * * *
+            CODE    0000H     0003H     ABSOLUTE     
+* OVERLAP * CODE    0000H     0002H     ABSOLUTE     
+                    0003H     0008H                  *** GAP ***
+            CODE    000BH     0002H     ABSOLUTE     
+                    000DH     0023H                  *** GAP ***
+            CODE    0030H     0018H     ABSOLUTE     
+                    0048H     07B8H                  *** GAP ***
+            CODE    0800H     000CH     UNIT         ?C_C51STARTUP
+
+
+
+UNRESOLVED EXTERNAL SYMBOLS:
+   ?C_START
+
+
+
+SYMBOL TABLE OF MODULE:  .\Objects\licznik_czasu (?C_STARTUP)
+
+  VALUE           TYPE          NAME
+  ----------------------------------
+
+  -------         MODULE        ?C_STARTUP
+  C:0800H         SEGMENT       ?C_C51STARTUP
+  I:0008H         SEGMENT       ?STACK
+  C:0000H         PUBLIC        ?C_STARTUP
+  D:00E0H         SYMBOL        ACC
+  D:00F0H         SYMBOL        B
+  D:0083H         SYMBOL        DPH
+  D:0082H         SYMBOL        DPL
+  N:0000H         SYMBOL        IBPSTACK
+  N:0100H         SYMBOL        IBPSTACKTOP
+  N:0080H         SYMBOL        IDATALEN
+  C:0803H         SYMBOL        IDATALOOP
+  N:0000H         SYMBOL        PBPSTACK
+  N:0100H         SYMBOL        PBPSTACKTOP
+  N:0000H         SYMBOL        PDATALEN
+  N:0000H         SYMBOL        PDATASTART
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/20/2021  20:54:26  PAGE 2
+
+
+  N:0000H         SYMBOL        PPAGE
+  N:0000H         SYMBOL        PPAGEENABLE
+  D:00A0H         SYMBOL        PPAGE_SFR
+  D:0081H         SYMBOL        SP
+  C:0800H         SYMBOL        STARTUP1
+  N:0000H         SYMBOL        XBPSTACK
+  N:0000H         SYMBOL        XBPSTACKTOP
+  N:0000H         SYMBOL        XDATALEN
+  N:0000H         SYMBOL        XDATASTART
+  C:0000H         LINE#         126
+  C:0800H         LINE#         133
+  C:0802H         LINE#         134
+  C:0803H         LINE#         135
+  C:0804H         LINE#         136
+  C:0806H         LINE#         185
+  C:0809H         LINE#         196
+  -------         ENDMOD        ?C_STARTUP
+
+  -------         MODULE        LICZNIK_BITOWY
+  B:00A8H.7       SYMBOL        EA
+  B:00A8H.1       SYMBOL        ET0
+  C:0030H         SYMBOL        INIT
+  C:0046H         SYMBOL        INTERRUPT_OVERFLOW
+  C:0039H         SYMBOL        LICZ_CZAS
+  D:00A0H         SYMBOL        P2
+  D:0089H         SYMBOL        TMOD
+  B:0088H.4       SYMBOL        TR0
+  C:0000H         LINE#         2
+  C:000BH         LINE#         5
+  C:0030H         LINE#         10
+  C:0032H         LINE#         11
+  C:0034H         LINE#         13
+  C:0037H         LINE#         14
+  C:0039H         LINE#         17
+  C:003CH         LINE#         18
+  C:003DH         LINE#         20
+  C:003EH         LINE#         21
+  C:0040H         LINE#         22
+  C:0042H         LINE#         24
+  C:0044H         LINE#         25
+  C:0046H         LINE#         28
+  C:0047H         LINE#         29
+  -------         ENDMOD        LICZNIK_BITOWY
+
+*** WARNING L5: CODE SPACE MEMORY OVERLAP
+    FROM:    0000H
+    TO:      0002H
+
+*** WARNING L1: UNRESOLVED EXTERNAL SYMBOL
+    SYMBOL:  ?C_START
+    MODULE:  .\Objects\STARTUP.obj (?C_STARTUP)
+
+*** WARNING L2: REFERENCE MADE TO UNRESOLVED EXTERNAL
+    SYMBOL:  ?C_START
+    MODULE:  .\Objects\STARTUP.obj (?C_STARTUP)
+    ADDRESS: 080AH
+
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  04/20/2021  20:54:26  PAGE 3
+
+
+******************************************************************************
+* RESTRICTED VERSION WITH 0800H BYTE CODE SIZE LIMIT; USED: 002BH BYTE ( 2%) *
+******************************************************************************
+
+Program Size: data=9.0 xdata=0 code=43
+LINK/LOCATE RUN COMPLETE.  3 WARNING(S),  0 ERROR(S)

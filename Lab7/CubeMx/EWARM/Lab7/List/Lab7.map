@@ -1,0 +1,368 @@
+###############################################################################
+#
+# IAR ELF Linker V9.10.2.313/W64 for ARM                  30/May/2021  14:04:13
+# Copyright 2007-2021 IAR Systems AB.
+#
+#    Output file  =
+#        D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Exe\Lab7.out
+#    Map file     =
+#        D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\List\Lab7.map
+#    Command line =
+#        -f "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im.
+#        Tadeusza Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Exe\Lab7.out.rsp"
+#        ("D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Application\User\Core\main.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Application\EWARM\startup_stm32f072xb.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_cortex.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_dma.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_exti.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_flash.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_flash_ex.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_gpio.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_i2c.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_i2c_ex.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Application\User\Core\stm32f0xx_hal_msp.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_pwr.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_pwr_ex.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_rcc.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_rcc_ex.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_tim.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver\stm32f0xx_hal_tim_ex.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Application\User\Core\stm32f0xx_it.o"
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\CMSIS\system_stm32f0xx.o"
+#        --no_out_extension -o "D:\Micha³a\OneDrive\OneDrive - Politechnika
+#        Krakowska im. Tadeusza Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Exe\Lab7.out" --redirect
+#        _Printf=_PrintfFullNoMb --redirect _Scanf=_ScanfFullNoMb --map
+#        "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza
+#        Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\List\Lab7.map"
+#        --config "D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im.
+#        Tadeusza Koœciuszki\Semestr
+#        4\MiM_2\Lab7\CubeMx\EWARM/stm32f072xb_flash.icf" --semihosting --entry
+#        __iar_program_start --vfe --text_out locale)
+#
+###############################################################################
+
+*******************************************************************************
+*** RUNTIME MODEL ATTRIBUTES
+***
+
+CppFlavor       = *
+__SystemLibrary = DLib
+__dlib_version  = 6
+
+
+*******************************************************************************
+*** HEAP SELECTION
+***
+
+The basic heap was selected because some modules are built with
+size limitations (and not runtime checking), and --advanced_heap
+was not specified.
+
+
+*******************************************************************************
+*** PLACEMENT SUMMARY
+***
+
+"A0":  place at address 0x800'0000 { ro section .intvec };
+"P1":  place in [from 0x800'0000 to 0x801'ffff] { ro };
+define block CSTACK with size = 1K, alignment = 8 { };
+define block HEAP with size = 512, alignment = 8 { };
+"P2":  place in [from 0x2000'0000 to 0x2000'3fff] {
+          rw, block CSTACK, block HEAP };
+initialize by copy { rw };
+
+  Section            Kind         Address   Size  Object
+  -------            ----         -------   ----  ------
+"A0":                                       0xc0
+  .intvec            ro code   0x800'0000   0xc0  startup_stm32f072xb.o [1]
+                             - 0x800'00c0   0xc0
+
+"P1":                                      0xbee
+  .text              ro code   0x800'00c0  0x5d0  stm32f0xx_hal_rcc.o [4]
+  .text              ro code   0x800'0690    0xc  stm32f0xx_hal.o [4]
+  .text              ro code   0x800'069c   0x44  stm32f0xx_hal.o [4]
+  .text              ro code   0x800'06e0   0x36  I32DivMod.o [6]
+  .text              ro code   0x800'0716    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0718   0x78  stm32f0xx_hal_cortex.o [4]
+  .text              ro code   0x800'0790    0x2  IntDivZer.o [6]
+  .text              ro code   0x800'0792    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0794  0x1c4  stm32f0xx_hal_gpio.o [4]
+  .text              ro code   0x800'0958  0x11c  main.o [2]
+  .text              ro code   0x800'0a74   0x20  stm32f0xx_hal.o [4]
+  .text              ro code   0x800'0a94   0x14  memset.o [6]
+  .text              ro code   0x800'0aa8   0x28  stm32f0xx_hal.o [4]
+  .text              ro code   0x800'0ad0   0x30  stm32f0xx_hal_msp.o [2]
+  .text              ro code   0x800'0b00   0x4e  ABImemset.o [6]
+  .text              ro code   0x800'0b4e   0x30  copy_init3.o [6]
+  .text              ro code   0x800'0b7e    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0b80   0x28  data_init.o [6]
+  .iar.init_table    const     0x800'0ba8   0x14  - Linker created -
+  .text              ro code   0x800'0bbc   0x1e  cmain.o [6]
+  .text              ro code   0x800'0bda    0x4  low_level_init.o [5]
+  .text              ro code   0x800'0bde    0x8  exit.o [5]
+  .text              ro code   0x800'0be6    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0be8    0xa  cexit.o [6]
+  .text              ro code   0x800'0bf2    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0bf4   0x14  exit.o [7]
+  .text              ro code   0x800'0c08   0x1c  cstartup_M.o [6]
+  .text              ro code   0x800'0c24   0x14  system_stm32f0xx.o [3]
+  .text              ro code   0x800'0c38   0x10  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c48   0x10  stm32f0xx_hal.o [4]
+  .text              ro code   0x800'0c58   0x10  stm32f0xx_it.o [2]
+  Initializer bytes  const     0x800'0c68   0x10  <for P2-1>
+  .text              ro code   0x800'0c78    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c7a    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c7c    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c7e    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c80    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c82    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c84    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c86    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c88    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c8a    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c8c    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c8e    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c90    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c92    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c94    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c96    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c98    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c9a    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c9c    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0c9e    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0ca0    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0ca2    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0ca4    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0ca6    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0ca8    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0caa    0x2  startup_stm32f072xb.o [1]
+  .text              ro code   0x800'0cac    0x2  startup_stm32f072xb.o [1]
+  .rodata            const     0x800'0cae    0x0  copy_init3.o [6]
+                             - 0x800'0cae  0xbee
+
+"P2", part 1 of 2:                          0x10
+  P2-1                        0x2000'0000   0x10  <Init block>
+    .data            inited   0x2000'0000    0xc  stm32f0xx_hal.o [4]
+    .data            inited   0x2000'000c    0x4  system_stm32f0xx.o [3]
+                            - 0x2000'0010   0x10
+
+"P2", part 2 of 2:                         0x400
+  CSTACK                      0x2000'0010  0x400  <Block>
+    CSTACK           uninit   0x2000'0010  0x400  <Block tail>
+                            - 0x2000'0410  0x400
+
+Unused ranges:
+
+         From           To      Size
+         ----           --      ----
+   0x800'0cae   0x801'ffff  0x1'f352
+  0x2000'0410  0x2000'3fff    0x3bf0
+
+
+*******************************************************************************
+*** INIT TABLE
+***
+
+          Address      Size
+          -------      ----
+Copy (__iar_copy_init3)
+    1 source range, total size 0x10:
+           0x800'0c68  0x10
+    1 destination range, total size 0x10:
+          0x2000'0000  0x10
+
+
+
+*******************************************************************************
+*** MODULE SUMMARY
+***
+
+    Module                  ro code  ro data  rw data
+    ------                  -------  -------  -------
+command line/config:
+    -------------------------------------------------
+    Total:
+
+D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Application\EWARM: [1]
+    startup_stm32f072xb.o       272
+    -------------------------------------------------
+    Total:                      272
+
+D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Application\User\Core: [2]
+    main.o                      284
+    stm32f0xx_hal_msp.o          48
+    stm32f0xx_it.o               16
+    -------------------------------------------------
+    Total:                      348
+
+D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\CMSIS: [3]
+    system_stm32f0xx.o           20        4        4
+    -------------------------------------------------
+    Total:                       20        4        4
+
+D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver: [4]
+    stm32f0xx_hal.o             168       12       12
+    stm32f0xx_hal_cortex.o      120
+    stm32f0xx_hal_gpio.o        452
+    stm32f0xx_hal_rcc.o       1'488
+    -------------------------------------------------
+    Total:                    2'228       12       12
+
+dl6M_tln.a: [5]
+    exit.o                        8
+    low_level_init.o              4
+    -------------------------------------------------
+    Total:                       12
+
+rt6M_tl.a: [6]
+    ABImemset.o                  78
+    I32DivMod.o                  54
+    IntDivZer.o                   2
+    cexit.o                      10
+    cmain.o                      30
+    copy_init3.o                 48
+    cstartup_M.o                 28
+    data_init.o                  40
+    memset.o                     20
+    -------------------------------------------------
+    Total:                      310
+
+shb_l.a: [7]
+    exit.o                       20
+    -------------------------------------------------
+    Total:                       20
+
+    Linker created                        20    1'024
+-----------------------------------------------------
+    Grand Total:              3'210       36    1'040
+
+
+*******************************************************************************
+*** ENTRY LIST
+***
+
+Entry                       Address   Size  Type      Object
+-----                       -------   ----  ----      ------
+.iar.init_table$$Base    0x800'0ba8          --   Gb  - Linker created -
+.iar.init_table$$Limit   0x800'0bbc          --   Gb  - Linker created -
+?main                    0x800'0bbd         Code  Gb  cmain.o [6]
+AHBPrescTable            0x800'0c28   0x10  Data  Gb  system_stm32f0xx.o [3]
+CSTACK$$Base            0x2000'0010          --   Gb  - Linker created -
+CSTACK$$Limit           0x2000'0410          --   Gb  - Linker created -
+HAL_Delay                0x800'0aa9   0x28  Code  Gb  stm32f0xx_hal.o [4]
+HAL_GPIO_Init            0x800'0795  0x17e  Code  Gb  stm32f0xx_hal_gpio.o [4]
+HAL_GPIO_ReadPin         0x800'0913    0xc  Code  Gb  stm32f0xx_hal_gpio.o [4]
+HAL_GPIO_TogglePin       0x800'092b   0x10  Code  Gb  stm32f0xx_hal_gpio.o [4]
+HAL_GPIO_WritePin        0x800'091f    0xc  Code  Gb  stm32f0xx_hal_gpio.o [4]
+HAL_GetTick              0x800'0691    0xc  Code  Gb  stm32f0xx_hal.o [4]
+HAL_IncTick              0x800'0c49   0x10  Code  Gb  stm32f0xx_hal.o [4]
+HAL_Init                 0x800'0a75   0x1a  Code  Gb  stm32f0xx_hal.o [4]
+HAL_InitTick             0x800'069d   0x44  Code  Gb  stm32f0xx_hal.o [4]
+HAL_MspInit              0x800'0ad1   0x30  Code  Gb  stm32f0xx_hal_msp.o [2]
+HAL_NVIC_SetPriority     0x800'0753    0x8  Code  Gb  stm32f0xx_hal_cortex.o [4]
+HAL_RCC_ClockConfig      0x800'04ed  0x106  Code  Gb  stm32f0xx_hal_rcc.o [4]
+HAL_RCC_GetSysClockFreq
+                         0x800'05f9   0x50  Code  Gb  stm32f0xx_hal_rcc.o [4]
+HAL_RCC_GetSysClockFreq::aPLLMULFactorTable
+                         0x800'0670   0x10  Data  Lc  stm32f0xx_hal_rcc.o [4]
+HAL_RCC_GetSysClockFreq::aPredivFactorTable
+                         0x800'0680   0x10  Data  Lc  stm32f0xx_hal_rcc.o [4]
+HAL_RCC_OscConfig        0x800'00c1  0x41e  Code  Gb  stm32f0xx_hal_rcc.o [4]
+HAL_SYSTICK_Config       0x800'075b   0x28  Code  Gb  stm32f0xx_hal_cortex.o [4]
+HardFault_Handler        0x800'0c5b    0x2  Code  Gb  stm32f0xx_it.o [2]
+NMI_Handler              0x800'0c59    0x2  Code  Gb  stm32f0xx_it.o [2]
+PendSV_Handler           0x800'0c5f    0x2  Code  Gb  stm32f0xx_it.o [2]
+Region$$Table$$Base      0x800'0ba8          --   Gb  - Linker created -
+Region$$Table$$Limit     0x800'0bbc          --   Gb  - Linker created -
+SVC_Handler              0x800'0c5d    0x2  Code  Gb  stm32f0xx_it.o [2]
+SysTick_Handler          0x800'0c61    0x8  Code  Gb  stm32f0xx_it.o [2]
+SystemClock_Config       0x800'0a21   0x54  Code  Gb  main.o [2]
+SystemCoreClock         0x2000'000c    0x4  Data  Gb  system_stm32f0xx.o [3]
+SystemInit               0x800'0c25    0x2  Code  Gb  system_stm32f0xx.o [3]
+__ICFEDIT_region_RAM_end__ {Abs}
+                        0x2000'3fff         Data  Gb  <internal module>
+__ICFEDIT_region_RAM_start__ {Abs}
+                        0x2000'0000         Data  Gb  <internal module>
+__NVIC_SetPriority       0x800'0719   0x3a  Code  Lc  stm32f0xx_hal_cortex.o [4]
+__aeabi_idiv0            0x800'0791         Code  Gb  IntDivZer.o [6]
+__aeabi_memset           0x800'0b01         Code  Gb  ABImemset.o [6]
+__cmain                  0x800'0bbd         Code  Gb  cmain.o [6]
+__exit                   0x800'0bf5   0x14  Code  Gb  exit.o [7]
+__iar_Memset4_word       0x800'0b21         Code  Gb  ABImemset.o [6]
+__iar_Memset_word        0x800'0b0d         Code  Gb  ABImemset.o [6]
+__iar_copy_init3         0x800'0b4f   0x30  Code  Gb  copy_init3.o [6]
+__iar_data_init3         0x800'0b81   0x28  Code  Gb  data_init.o [6]
+__iar_program_start      0x800'0c09         Code  Gb  cstartup_M.o [6]
+__iar_small_uidiv        0x800'06e1         Code  Gb  I32DivMod.o [6]
+__iar_small_uidivmod     0x800'06e1         Code  Gb  I32DivMod.o [6]
+__low_level_init         0x800'0bdb    0x4  Code  Gb  low_level_init.o [5]
+__vector_table           0x800'0000         Data  Gb  startup_stm32f072xb.o [1]
+_call_main               0x800'0bc9         Code  Gb  cmain.o [6]
+_exit                    0x800'0be9         Code  Gb  cexit.o [6]
+exit                     0x800'0bdf    0x8  Code  Gb  exit.o [5]
+main                     0x800'0959   0xc0  Code  Gb  main.o [2]
+memset                   0x800'0a95   0x14  Code  Gb  memset.o [6]
+uwTick                  0x2000'0004    0x4  Data  Gb  stm32f0xx_hal.o [4]
+uwTickFreq              0x2000'0000    0x1  Data  Gb  stm32f0xx_hal.o [4]
+uwTickPrio              0x2000'0008    0x4  Data  Gb  stm32f0xx_hal.o [4]
+
+
+[1] = D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Application\EWARM
+[2] = D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Application\User\Core
+[3] = D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\CMSIS
+[4] = D:\Micha³a\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza Koœciuszki\Semestr 4\MiM_2\Lab7\CubeMx\EWARM\Lab7\Obj\Drivers\STM32F0xx_HAL_Driver
+[5] = dl6M_tln.a
+[6] = rt6M_tl.a
+[7] = shb_l.a
+
+  3'210 bytes of readonly  code memory
+     36 bytes of readonly  data memory
+  1'040 bytes of readwrite data memory
+
+Errors: none
+Warnings: none

@@ -1,0 +1,64 @@
+A51 MACRO ASSEMBLER  LICZNIK_BITOWY                                                       04/20/2021 20:54:26 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\licznik_bitowy.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE licznik_bitowy.a51 SET(SMALL) DEBUG PRINT(.\Listings\licznik_bitowy.lst
+                      ) OBJECT(.\Objects\licznik_bitowy.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+----                   1     CSEG AT 0
+0000 0130              2             AJMP INIT
+                       3     
+----                   4     CSEG AT 0Bh ; przepelnienie Timera 0
+000B 0146              5             AJMP INTERRUPT_OVERFLOW ; idz do instrukcji przerwania
+                       6     
+----                   7     CSEG AT 30h
+                       8             
+0030                   9     INIT:
+0030 D2AF             10             SETB EA ; globalne odblokowanie przerwan
+0032 D2A9             11             SETB ET0 ; odblokowanie przerwan na Timerze 0
+                      12     
+0034 758901           13             MOV TMOD, #00000001b ; Ustaw Timer 1 w tryb 16-bitowy
+0037 D28C             14             SETB TR0 ; Start Timera 0
+                      15     
+0039                  16     LICZ_CZAS:
+0039 B80EFD           17             CJNE R0, #14, $ ; Czekaj az R0 równe 14, czyli uplynie 1 sekunda
+003C 0A               18             INC R2 ; inkrementuj rejestr R2 sluzacy do wyswietlania diod
+                      19     
+003D EA               20             MOV A, R2 ; prznies wartosc rejestru R2 do A
+003E 64FF             21             XRL A, #0FFh ; wykonaj alternatywe rozlaczna (funkcja XOR) miedzy A oraz wartoscia 
+                             FF
+0040 F5A0             22             MOV P2, A ; zapal diody
+                      23     
+0042 7800             24             MOV R0, #0 ; Zeruj rejestr R0
+0044 80F3             25             SJMP LICZ_CZAS ; uplynieciu sekundy wroc do LICZ_CZAS
+                      26     
+0046                  27     INTERRUPT_OVERFLOW: ; Po przpelnieniu licznika wykonaj:
+0046 08               28             INC R0 ; inkrementuj R0 - wykoano jeden cykl Timera
+0047 32               29             RETI ; powrot z przerwania
+                      30     
+                      31     END
+A51 MACRO ASSEMBLER  LICZNIK_BITOWY                                                       04/20/2021 20:54:26 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+ET0. . . . . . . .  B ADDR   00A8H.1 A   
+INIT . . . . . . .  C ADDR   0030H   A   
+INTERRUPT_OVERFLOW  C ADDR   0046H   A   
+LICZ_CZAS. . . . .  C ADDR   0039H   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR0. . . . . . . .  B ADDR   0088H.4 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

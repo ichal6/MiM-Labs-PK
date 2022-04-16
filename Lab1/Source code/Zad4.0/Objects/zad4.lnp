@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\RAMtoRAM.obj" 
+TO ".\Objects\zad4.0" 
+PRINT(".\Listings\zad4.m51") RAMSIZE(256) 

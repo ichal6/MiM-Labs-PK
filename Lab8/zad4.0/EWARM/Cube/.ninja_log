@@ -1,0 +1,23 @@
+# ninja log v5
+3	411	6446146630043327	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Application/EWARM/startup_stm32f072xb.o	7d0119edd79538c6
+420	1112	6446146636927210	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Application/User/Core/stm32f0xx_it.o	b4d67c9824f1dc47
+314	1164	6446146637027194	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Application/User/Core/main.o	1eabcfe595cec101
+1139	1635	6446146642147139	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Application/User/Core/stm32f0xx_hal_msp.o	540cf2cdd48c9f35
+1189	1886	6446146644667150	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_flash.o	910b56a9e692cc9a
+1660	2203	6446146647823757	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal.o	e04f8fcdeec686b2
+1909	2695	6446146652705687	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_dma.o	7dd272e9620c8a
+2227	2785	6446146653605626	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_cortex.o	4c917096126ad080
+2811	3273	6446146658505263	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/CMSIS/system_stm32f0xx.o	35c256355807194b
+2725	3361	6446146659405164	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_exti.o	d6e990b1522953d5
+3296	3833	6446146664104825	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_pwr_ex.o	16f8d68dc6d3f2f0
+3387	3986	6446146665604696	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_i2c_ex.o	4a187cd41b05d504
+4011	4528	6446146671144232	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_pwr.o	31382fcc780eaa96
+4554	6029	6446146679119936	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_gpio.o	9fc87537c6310ae2
+6053	7059	6446146696350908	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_flash_ex.o	ff348e8c452c6eb1
+7084	7894	6446146704725009	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_rcc_ex.o	bcd1b467b613ea24
+3857	8505	6446146710760575	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_i2c.o	37aab8b9c02ec88e
+7919	10058	6446146726322016	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_tim_ex.o	863ffaa61ac91e
+10083	11494	6446146740749412	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_rcc.o	969f8afed9977e4f
+8530	13057	6446146756256889	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Obj/Drivers/STM32F0xx_HAL_Driver/stm32f0xx_hal_tim.o	c14def7008a31387
+13085	13521	6446146760956509	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Exe/Cube.out	8855bb9b7505edf9
+13591	13701	6446146762956346	D:/Michała/OneDrive/OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki/Semestr 4/MiM_2/Lab8/zad4.0/EWARM/Cube/Exe/Cube.hex	ad8847495b7ff5f4

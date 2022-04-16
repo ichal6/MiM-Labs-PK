@@ -1,0 +1,15 @@
+"D:\Programy\IAR Embedded for ARM\arm\bin\armPROC.dll" 
+
+"D:\Programy\IAR Embedded for ARM\arm\bin\armSTLINK.dll" 
+
+"D:\Michała\OneDrive\OneDrive - Politechnika Krakowska im. Tadeusza Kościuszki\Semestr 4\MiM_2\Lab8\Cube\EWARM\Cube\Exe\Cube.out" 
+
+--plugin="D:\Programy\IAR Embedded for ARM\arm\bin\armbat.dll" 
+
+--device_macro="D:\Programy\IAR Embedded for ARM\arm\config\debugger\ST\STM32F0xx.dmac" 
+
+--flash_loader="D:\Programy\IAR Embedded for ARM\arm\config\flashloader\ST\FlashSTM32F07xxB.board" 
+
+
+
+

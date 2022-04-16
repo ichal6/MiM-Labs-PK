@@ -1,0 +1,57 @@
+A51 MACRO ASSEMBLER  PROGRAMMEMORYTORAM                                                   03/21/2021 12:22:18 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\ProgramMemoryToRAM.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE ProgramMemoryToRAM.a51 SET(SMALL) DEBUG PRINT(.\Listings\ProgramMemoryT
+                      oRAM.lst) OBJECT(.\Objects\ProgramMemoryToRAM.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     MY_KILLING_COPY SEGMENT CODE ; definiujemy segment kodu
+  0030                 2     Cel DATA 30h ; miejsce zapisu danych z etykiety do pamieci RAM
+  0005                 3     IleDanych EQU 5 ; definiujemy dlugosc etykiety
+                       4             
+----                   5     CSEG AT 0
+0000 020000   F        6     JMP start ; w chwili uruchomienia programu zaczynamy od etykiety start
+                       7     
+----                   8     RSEG MY_KILLING_COPY ; umiejscowienie programu w pamieci dokonuje automatycznie assembler
+                       9                                              ; programista nie wskazuje recznie miejsca w pamie
+                             ci
+0000                  10     start: ; inicjalizacja programu
+0000 900000   F       11             MOV DPTR, #etykieta ; przenies wartosc etykieta do data pointer(DPTR)
+0003 7830             12             MOV R0, #Cel ; przenies adres miejsca w pamieci do rejestru R0
+0005 7905             13             MOV R1, #IleDanych ; przenies rozmiar etykiety do rejestru R1
+0007                  14     Petla:
+0007 7400             15             MOV A, #0h ; zeruj A po kazdym przejsciu petli
+0009 93               16             MOVC A, @A+DPTR ; przenies dane z pamieci programu do akumulatora - wykorzystuje ad
+                             resowanie posrednie
+000A A3               17             INC DPTR ; inkrementacja wskaznika na dane z etykiety
+000B F6               18             MOV @R0, A ; przenies dane z akumulatora do RO (adresowanie posrednie) 
+000C 08               19             INC R0 ; inkrementuj RO 
+000D D9F8             20             DJNZ R1, Petla ; sprawdza wartosc R1 jest rozny od zera, jesli tak wykonuje skok do
+                              Petla, jesli nie idzie dalej
+                      21             
+000F 0B150412         22     etykieta: db 11,21,4,18,8 ; definicja etykiety
+0013 08                      
+                      23     END
+A51 MACRO ASSEMBLER  PROGRAMMEMORYTORAM                                                   03/21/2021 12:22:18 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CEL. . . . . . . .  D ADDR   0030H   A   
+ETYKIETA . . . . .  C ADDR   000FH   R   SEG=MY_KILLING_COPY
+ILEDANYCH. . . . .  N NUMB   0005H   A   
+MY_KILLING_COPY. .  C SEG    0014H       REL=UNIT
+PETLA. . . . . . .  C ADDR   0007H   R   SEG=MY_KILLING_COPY
+START. . . . . . .  C ADDR   0000H   R   SEG=MY_KILLING_COPY
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

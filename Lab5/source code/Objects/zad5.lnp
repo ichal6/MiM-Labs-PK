@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\zad.5.0.obj" 
+TO ".\Objects\zad5.0" 
+PRINT(".\Listings\zad5.m51") RAMSIZE(256) 

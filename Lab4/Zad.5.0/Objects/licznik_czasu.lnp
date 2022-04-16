@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\licznik_bitowy.obj" 
+TO ".\Objects\licznik_czasu" 
+PRINT(".\Listings\licznik_czasu.m51") RAMSIZE(256) 

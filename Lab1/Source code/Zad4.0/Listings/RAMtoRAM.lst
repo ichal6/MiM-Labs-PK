@@ -1,0 +1,57 @@
+A51 MACRO ASSEMBLER  RAMTORAM                                                             03/21/2021 12:08:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\RAMtoRAM.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE RAMtoRAM.a51 SET(SMALL) DEBUG PRINT(.\Listings\RAMtoRAM.lst) OBJECT(.\O
+                      bjects\RAMtoRAM.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     MY_KILLING_COPY SEGMENT CODE ; definiujemy segment kodu
+  0020                 2     Zrodlo DATA 20h  ; zrodlo danych 
+  0030                 3     Cel DATA 30h ; miejsce zapisu danych 
+  0010                 4     IleDanych EQU 16 ; ilosc danych do skopiowania
+                       5             
+                       6             
+----                   7     CSEG AT 0
+0000 020000   F        8     JMP start ; w chwili uruchomienia programu zaczynamy od etykiety start
+                       9     
+                      10     
+----                  11     RSEG MY_KILLING_COPY ; umiejscowienie programu w pamieci dokonuje automatycznie assembler
+                      12                                              ; programista nie wskazuje recznie miejsca w pamie
+                             ci
+0000                  13             start: ; inicjalizacja programu
+0000 7820             14                     MOV R0,#Zrodlo ; przenies adres miejsca w pamieci do rejestru R0 dla zrodla
+0002 7930             15                     MOV R1,#Cel ; przenies adres miejsca w pamieci do rejestru R1 dla celu
+0004 7B10             16                     MOV R3,#IleDanych ; przenies ilosc komorek pamieci do przekopiowania do R3
+0006                  17             Petla:
+0006 E6               18                     MOV A,@R0 ; przenosi dane z komorki pamieci wskazywanej przez R0 do akumula
+                             tora
+0007 F7               19                     MOV @R1,A ; przenosi dane z akumulatora do komorki pamieci wskazywanej prze
+                             z R1
+0008 08               20                     INC R0 ; inkrementuje wartosc R0
+0009 09               21                     INC R1 ; inkrementuje wartosc R1
+000A DBFA             22             DJNZ R3,Petla ; sprawdza wartosc R1 jest rozny od zera, jesli tak wykonuje skok do 
+                             Petla, jesli nie idzie dalej
+                      23     END
+A51 MACRO ASSEMBLER  RAMTORAM                                                             03/21/2021 12:08:05 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+CEL. . . . . . . .  D ADDR   0030H   A   
+ILEDANYCH. . . . .  N NUMB   0010H   A   
+MY_KILLING_COPY. .  C SEG    000CH       REL=UNIT
+PETLA. . . . . . .  C ADDR   0006H   R   SEG=MY_KILLING_COPY
+START. . . . . . .  C ADDR   0000H   R   SEG=MY_KILLING_COPY
+ZRODLO . . . . . .  D ADDR   0020H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

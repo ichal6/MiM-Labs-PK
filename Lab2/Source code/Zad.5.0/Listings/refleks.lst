@@ -1,0 +1,322 @@
+A51 MACRO ASSEMBLER  REFLEKS                                                              04/17/2021 10:57:05 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\refleks.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE refleks.a51 SET(SMALL) DEBUG PRINT(.\Listings\refleks.lst) OBJECT(.\Obj
+                      ects\refleks.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+                       1     ; stale dla refleksu
+  0060                 2     startWaitingTime EQU 0x60 ; startowy czas swiecenia diody
+                       3             
+                       4     ; stale dla generatora
+  0007                 5     j EQU 7 ; definujemy stala j
+  000A                 6     kSize EQU 10 ; definiujemy stala k
+  0004                 7     m EQU 4 ; <0,3> ; definiujemy stala m odpowiedzialna za zakres generowanych liczb
+  0003                 8     indexModuloStart EQU 3 ; definiujemy pierwsza wartosc indeksu
+                       9     
+0020                  10     ORG 0020H ; ustaw miejsce w kodzie na 20h
+  0004                11     k0 EQU 4 ; definujemy wartosci poczatkowe tablicy
+  0005                12     k1 EQU 5
+  0003                13     k2 EQU 3
+  0003                14     k3 EQU 3
+  0003                15     k4 EQU 3
+  0004                16     k5 EQU 4 
+  0006                17     k6 EQU 6
+  0002                18     k7 EQU 2
+  0006                19     k8 EQU 6
+  0005                20     k9 EQU 5
+                      21     
+                      22     ; komorki pamieci dla refleksu
+  0060                23     waitTime DATA 60h ; aktulualny czas swiecenia
+                      24     
+                      25     ; komorki pamieci dla generatora
+  0020                26     poczatekTablicy DATA 20h ; definjemy poczatek tablicy
+  0029                27     koniecTablicy DATA 29h ; definiujemy koniec tablicy
+  0032                28     first_element DATA 32h ; definujmey pierwszy element dla wartosci modulo
+  0033                29     second_element DATA 33h ; definujmey drugi element dla wartosci modulo
+  0034                30     result DATA 34h
+  0040                31     Modulo1 DATA 40h ; pierwsza czesc wyrazenia modulo
+  0041                32     Modulo2 DATA 41h ; druga czesc wyrazenia modulo
+  0042                33     indexModulo DATA 42h
+  0050                34     Quotient DATA 50h ; czesc calkowita z dzielenia
+  0051                35     Remainder DATA 51h ; reszta z dzielenia
+                      36             
+                      37     
+----                  38     CSEG AT 0
+0000 3109             39             ACALL INIT_GEN
+0002 02016B           40             LJMP INIT_REFLEX
+                      41     
+----                  42     CSEG AT 100h
+                      43             ;----------------GENERATOR-------------------
+                      44             
+0100                  45             RUN_GENERATOR:
+0100 3136             46                     ACALL INDEKS_1 ; oblicz indeks i-j+k
+0102 3144             47                     ACALL GET_FROM_ARRAY ; pobierz wartosci z rejestru cyklicznego
+0104 3149             48                     ACALL SUM ; dodaj dwie wartosci pobrane z rejestru cyklicznego
+0106 3154             49                     ACALL CALCULATE_RANDOM ; oblicza wartosc losowa i przenosi ja do akumulatora
+                      50                     
+0108 22               51                     RET ; powrot z funkcji
+                      52                     
+0109                  53             INIT_GEN: ; wpisanie wartosci tablicy do pamieci RAM
+0109 752004           54                     MOV poczatekTablicy, #k0
+010C 752105           55                     MOV 21h, #k1
+010F 752203           56                     MOV 22h, #k2
+0112 752303           57                     MOV 23h, #k3
+A51 MACRO ASSEMBLER  REFLEKS                                                              04/17/2021 10:57:05 PAGE     2
+
+0115 752403           58                     MOV 24h, #k4
+0118 752504           59                     MOV 25h, #k5    
+011B 752606           60                     MOV 26h, #k6
+011E 752702           61                     MOV 27h, #k7
+0121 752806           62                     MOV 28h, #k8
+0124 752905           63                     MOV koniecTablicy, #k9
+                      64                     
+0127 3165             65                     ACALL RESET_INDEXES
+0129 22               66                     RET
+                      67                     
+012A                  68             MODULO:
+012A E540             69                     MOV A, Modulo1 ; prznies pierwszy argument z Modulo1 do A
+012C 8541F0           70                     MOV B, Modulo2 ; prznies pierwszy argument z Modulo1 do B
+                      71     
+012F 84               72                     DIV AB ; Dziel A przez B
+                      73     
+0130 F550             74                     MOV Quotient, A; Zapisz czesc calkowita do komorki RAM 50H
+0132 85F051           75                     MOV Remainder, B; Zapisz reszte do komorki RAM 51H
+                      76                     
+0135 22               77                     RET ; powrot z funkcji
+                      78                     
+0136                  79             INDEKS_1:
+0136 854240           80                     MOV Modulo1, indexModulo ; 3 = pierwotna wartosc indeksu dla k=10, prznies 
+                             z indexModulo do Modulo1
+0139 75410A           81                     MOV Modulo2, #kSize ; mod k, gdzie k = 10; prznies wartosc kSize do Modulo2
+                      82                     
+013C 312A             83                     ACALL MODULO ; wywolanie funkcji modulo
+                      84                     
+013E E551             85                     MOV A, Remainder ; zapisz reszte z dzielenia (wynik funkcji modulo) do A
+0140 2420             86                     ADD A, #20h ; dodaj 20h do akumulatora by uzyskac indeks
+0142 F8               87                     MOV R0, A ; zapisz wartosc z akumulatora do rejestru R0
+                      88     
+0143 22               89                     RET ; powrot z funkcji
+                      90                     
+                      91     
+0144                  92             GET_FROM_ARRAY:
+0144 8632             93                     MOV first_element, @R0 ; pobierz pierwsza skladowa do pamieci RAM (adresowa
+                             nie posrednie)
+0146 8733             94                     MOV second_element, @R1 ; pobierz druga skladowa do pamieci RAM (adresowani
+                             e posrednie)
+                      95                     
+0148 22               96                     RET ; powrot z funkcji
+                      97     
+0149                  98             SUM: ; czy moze wystapic przepelnienie?
+0149 E532             99                     MOV A, first_element ; prznies pierwszy element do akumulatora
+014B 2533            100                     ADD A, second_element ; dodaj drugi element do akumulatora
+014D F534            101                     MOV result, A ; prznies wartosc z akumulatora do pamieci RAM
+                     102                     
+014F 22              103                     RET ; powrot z funkcji
+                     104                     
+0150                 105             INCREMENT:
+0150 09              106                     INC R1 ; podnies o 1 wartosc R1 (Indeks)
+0151 0542            107                     INC indexModulo ; podnies o 1 wartosc  indexModulo
+                     108                     
+0153 22              109                     RET ; powrot z funkcji
+                     110     
+0154                 111             CALCULATE_RANDOM:
+0154 853440          112                     MOV Modulo1, result ; przenies result do Modulo1
+0157 754104          113                     MOV Modulo2, #m ; prznies wartosc parametru m do Modulo2
+                     114                     
+015A 312A            115                     ACALL MODULO ; wywoluje funkcje modulo
+015C E5F0            116                     MOV A, B ; przenies wynik funkcji modulo (szukana liczba losowa) do akumula
+                             tora
+                     117                     
+015E F7              118                     MOV @R1, A ; zapisz wartosc A do rejestru cyklicznego pod wartosc indeksu w
+                             skazywanego przez R1 (adresowanie posrednie)
+A51 MACRO ASSEMBLER  REFLEKS                                                              04/17/2021 10:57:05 PAGE     3
+
+                     119                     
+015F B929EE          120                     CJNE R1, #koniecTablicy, INCREMENT ; sprawdz czy indeks osiagnal koniecTabl
+                             icy,
+                     121                                                                                        ; jesli 
+                             tak idz dalej, jesli nie wywolaj funkcje INCREMENT
+0162 8001            122                     SJMP RESET_INDEXES ; idz do funkcji RESET_INDEKS
+                     123                     
+0164 22              124                     RET ; powrot z funkcji
+                     125                     
+0165                 126             RESET_INDEXES:
+0165 754203          127                     MOV indexModulo, #indexModuloStart ; przenies warosc 3 do indexModulo
+0168 7920            128                     MOV R1, #20h ; ustaw 20 jako wartosc rejestru R1 (poczatek tablicy)
+                     129                     
+016A 22              130                     RET ; powrot z funkcji
+                     131                     
+                     132                     
+                     133     ; ---------------REFLEKS--------------- 
+                     134     
+016B                 135             INIT_REFLEX:
+016B 756060          136                     MOV waitTime, #startWaitingTime ; laduj do pamieci domyslna wartosc czasu s
+                             wiecenia diody
+                     137     
+016E                 138             GENERATE_RANDOM_NUMBER_OF_DIODE:
+016E 3100            139                     ACALL RUN_GENERATOR ; wylosuj nowa liczbe i zapisz ja do akumulatora
+                     140             
+0170                 141             RESET_PROGRAM:
+0170 75B0FF          142                     MOV P3, #0xFF ; zeruj wcisniete przyciski
+                     143                     
+0173                 144             SWITCH_DIODE: ; funkcja sluzaca do wlaczania diod
+0173 31B0            145                     ACALL CALCULATE_DIODE_TO_DISPLAY ; wywolaj funkcje obliczajca ktora dioda m
+                             a zostac zapalona
+0175 FC              146                     MOV R4, A ; wpisz linie wylosowanej diody do rejestru R4
+0176 64FF            147                     XRL A, #0xFF ; wykonaj alternatywe wykluczajaca, by zapalic konkretne diody
+0178 F5A0            148                     MOV P2, A ; wpisz wartosc akumulatora do linii P2
+                     149                     
+017A                 150             CZEKAJ: ; funkcja czekaj na reakcje uzytkownika
+017A AD60            151                     MOV R5, waitTime
+                     152                     
+017C 00              153                     L1: NOP ; operacja NOP 1-cyklowa zegara
+017D 00              154                             NOP 
+017E AE60            155                             MOV R6, waitTime ; operacja 2-cyklowa
+0180 AE60            156                             MOV R6, waitTime
+                     157                             
+0182 00              158                             L2: NOP
+0183 00              159                                     NOP
+0184 AF60            160                                     MOV R7, waitTime
+0186 AF60            161                                     MOV R7, waitTime
+                     162                                     ; Petla L3 zuzyje 255*3 cykli maszynowych
+0188 00              163                                     L3: NOP                 ; instrukcja 1-cyklowa
+0189 00              164                                             NOP
+                     165                     
+018A DFFC            166                                     DJNZ R7, L3 ; instrukcja 2-cyklowa   
+018C DEF4            167                             DJNZ R6, L2
+018E DDEC            168                     DJNZ R5, L1     
+                     169     
+0190                 170             CHECK_ANSWER:
+0190 E5B0            171                     MOV A, P3 ; zczytaj wartosc klawiszy z linii P3
+0192 64FF            172                     XRL A, #0FFh ; wykonaj XOR by sprawdzic, czy jakis klawisz jest wcisniety
+                     173     
+0194 5C              174                     ANL A, R4 ; wykonaj iloczyn logiczny zapalonej diody oraz wcisnietego klawi
+                             sza, wynik zapisz do A
+                     175             
+0195 700D            176                     JNZ WIN ; jesli wynik rozny od 0 idz do funkcji WIN, jesli nie idz dalej
+                     177                     
+0197                 178             WRONG_ANSWER:
+0197 31A9            179                     ACALL ADD_MORE_TIME
+A51 MACRO ASSEMBLER  REFLEKS                                                              04/17/2021 10:57:05 PAGE     4
+
+                     180                     
+0199 92E0            181                     MOV ACC.0, C ; sprawdz czy wystapilo przepelnienie (Jesli carry flag ustawi
+                             one na 1, ustaw A na 1)
+019B 4002            182                     JC LOSE ; jesli tak zakoncz gre, jesli nie losuj kolejna diode
+                     183                     
+019D 216E            184                     AJMP GENERATE_RANDOM_NUMBER_OF_DIODE ; wylosuj nowa diode do zaswiecenia
+                     185     
+019F                 186             LOSE: ; Jesli osignieta maksymalny dostepny czas reakcji i uzytkownik nie dokonal p
+                             oprawnego wyboru
+019F 75A000          187                     MOV P2, #0 ; sekwencja porazki
+01A2 8003            188                     JMP END_PROGRAM ; idz do end program
+                     189     
+01A4                 190             WIN:
+01A4 75A0AA          191                     MOV P2, #010101010b ; zapal sekwencje zwyciestwa
+                     192             
+01A7                 193             END_PROGRAM: ; Zakoncz program
+01A7 80FE            194                     JMP END_PROGRAM
+                     195     
+01A9                 196             ADD_MORE_TIME: ; funkcja dodajaca wiecej czasu na reakcje
+01A9 E560            197                     MOV A, waitTime ; prznies wartosc waittime do akumulatora
+01AB 2420            198                     ADD A, #20h ; dodaj 20h do akumulatora
+01AD F560            199                     MOV waitTime, A ; zapisz wartosc z akumulatora do waitTime (RAM)
+01AF 22              200                     RET ; powrot z funkcji
+                     201             
+01B0                 202             CALCULATE_DIODE_TO_DISPLAY: ; konweruj numer zaswieconej diody na kod binarny dla p
+                             ortu 2
+01B0                 203                     DIODE3:
+01B0 B40303          204                     CJNE A, #3, DIODE2 ; jesli wartosc w A rowna 3 
+01B3 7408            205                             MOV A, #1000b ; zapisz kod biarny dla diody czwartej, jesli nie idz
+                              dalej
+01B5 22              206                             RET ; wyjdz z funckji
+01B6                 207                     DIODE2:
+01B6 B40203          208                     CJNE A, #2, DIODE1 ; jesli wartrosc w A rowna 2
+01B9 7404            209                             MOV A, #0100b
+01BB 22              210                             RET
+01BC                 211                     DIODE1:
+01BC B40103          212                     CJNE A, #1, DIODE0 ; jesli wartosc w A rowna 1
+01BF 7402            213                             MOV A, #0010b
+01C1 22              214                             RET
+01C2                 215                     DIODE0: ; jesli wartosc rozna od 3 lub 2 lub 1
+01C2 7401            216                             MOV A, #0001b ; wpisz kod binarny dla diody numer 0
+01C4 22              217                     RET ; powrot z funkcji
+                     218                     
+                     219             
+                     220     END
+A51 MACRO ASSEMBLER  REFLEKS                                                              04/17/2021 10:57:05 PAGE     5
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E                          T Y P E  V A L U E   ATTRIBUTES
+
+ACC . . . . . . . . . . . . . .  D ADDR   00E0H   A   
+ADD_MORE_TIME . . . . . . . . .  C ADDR   01A9H   A   
+B . . . . . . . . . . . . . . .  D ADDR   00F0H   A   
+CALCULATE_DIODE_TO_DISPLAY. . .  C ADDR   01B0H   A   
+CALCULATE_RANDOM. . . . . . . .  C ADDR   0154H   A   
+CHECK_ANSWER. . . . . . . . . .  C ADDR   0190H   A   
+CZEKAJ. . . . . . . . . . . . .  C ADDR   017AH   A   
+DIODE0. . . . . . . . . . . . .  C ADDR   01C2H   A   
+DIODE1. . . . . . . . . . . . .  C ADDR   01BCH   A   
+DIODE2. . . . . . . . . . . . .  C ADDR   01B6H   A   
+DIODE3. . . . . . . . . . . . .  C ADDR   01B0H   A   
+END_PROGRAM . . . . . . . . . .  C ADDR   01A7H   A   
+FIRST_ELEMENT . . . . . . . . .  D ADDR   0032H   A   
+GENERATE_RANDOM_NUMBER_OF_DIODE  C ADDR   016EH   A   
+GET_FROM_ARRAY. . . . . . . . .  C ADDR   0144H   A   
+INCREMENT . . . . . . . . . . .  C ADDR   0150H   A   
+INDEKS_1. . . . . . . . . . . .  C ADDR   0136H   A   
+INDEXMODULO . . . . . . . . . .  D ADDR   0042H   A   
+INDEXMODULOSTART. . . . . . . .  N NUMB   0003H   A   
+INIT_GEN. . . . . . . . . . . .  C ADDR   0109H   A   
+INIT_REFLEX . . . . . . . . . .  C ADDR   016BH   A   
+J . . . . . . . . . . . . . . .  N NUMB   0007H   A   
+K0. . . . . . . . . . . . . . .  N NUMB   0004H   A   
+K1. . . . . . . . . . . . . . .  N NUMB   0005H   A   
+K2. . . . . . . . . . . . . . .  N NUMB   0003H   A   
+K3. . . . . . . . . . . . . . .  N NUMB   0003H   A   
+K4. . . . . . . . . . . . . . .  N NUMB   0003H   A   
+K5. . . . . . . . . . . . . . .  N NUMB   0004H   A   
+K6. . . . . . . . . . . . . . .  N NUMB   0006H   A   
+K7. . . . . . . . . . . . . . .  N NUMB   0002H   A   
+K8. . . . . . . . . . . . . . .  N NUMB   0006H   A   
+K9. . . . . . . . . . . . . . .  N NUMB   0005H   A   
+KONIECTABLICY . . . . . . . . .  D ADDR   0029H   A   
+KSIZE . . . . . . . . . . . . .  N NUMB   000AH   A   
+L1. . . . . . . . . . . . . . .  C ADDR   017CH   A   
+L2. . . . . . . . . . . . . . .  C ADDR   0182H   A   
+L3. . . . . . . . . . . . . . .  C ADDR   0188H   A   
+LOSE. . . . . . . . . . . . . .  C ADDR   019FH   A   
+M . . . . . . . . . . . . . . .  N NUMB   0004H   A   
+MODULO. . . . . . . . . . . . .  C ADDR   012AH   A   
+MODULO1 . . . . . . . . . . . .  D ADDR   0040H   A   
+MODULO2 . . . . . . . . . . . .  D ADDR   0041H   A   
+P2. . . . . . . . . . . . . . .  D ADDR   00A0H   A   
+P3. . . . . . . . . . . . . . .  D ADDR   00B0H   A   
+POCZATEKTABLICY . . . . . . . .  D ADDR   0020H   A   
+QUOTIENT. . . . . . . . . . . .  D ADDR   0050H   A   
+REMAINDER . . . . . . . . . . .  D ADDR   0051H   A   
+RESET_INDEXES . . . . . . . . .  C ADDR   0165H   A   
+RESET_PROGRAM . . . . . . . . .  C ADDR   0170H   A   
+RESULT. . . . . . . . . . . . .  D ADDR   0034H   A   
+RUN_GENERATOR . . . . . . . . .  C ADDR   0100H   A   
+SECOND_ELEMENT. . . . . . . . .  D ADDR   0033H   A   
+STARTWAITINGTIME. . . . . . . .  N NUMB   0060H   A   
+SUM . . . . . . . . . . . . . .  C ADDR   0149H   A   
+SWITCH_DIODE. . . . . . . . . .  C ADDR   0173H   A   
+WAITTIME. . . . . . . . . . . .  D ADDR   0060H   A   
+WIN . . . . . . . . . . . . . .  C ADDR   01A4H   A   
+WRONG_ANSWER. . . . . . . . . .  C ADDR   0197H   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

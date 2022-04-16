@@ -1,0 +1,92 @@
+A51 MACRO ASSEMBLER  ZAD_5_0                                                              05/15/2021 15:55:36 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\zad.5.0.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE zad.5.0.a51 SET(SMALL) DEBUG PRINT(.\Listings\zad.5.0.lst) OBJECT(.\Obj
+                      ects\zad.5.0.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+  0020                 1     beginTable EQU 20h ; komorka poczatku tablicy
+  0010                 2     sizeTable EQU 16 ; dlugosc tablicy
+                       3     
+----                   4     CSEG AT 0 
+0000 3100              5             ACALL INIT ; idz do poczatku programu
+----                   6     CSEG AT 23h             ; pod adres 23h umieszczamy instrukcje
+0023 02011C            7             LJMP UART_INTERRUPT     ; skoku do procedury obslugi przerwan dla UART
+                       8             
+----                   9     CSEG AT 0x100
+0100                  10             INIT:
+0100 759850           11                     MOV SCON, #50h ; uart w trybie 1 (8 bit), REN=1
+0103 758920           12                     MOV TMOD, #20h ; licznik 1 w trybie 2
+0106 758DFD           13                     MOV TH1, #0FDh ; 9600 Bds at 11.0592MHz
+0109 D28E             14                     SETB TR1 ; uruchomienie licznika
+010B C299             15                     CLR TI ; wyzerowanie flagi wyslania
+010D D2AC             16                     SETB ES ; zezwolenie na przerwanie z portu szeregowego
+010F D2AF             17                     SETB EA ; globalne odblokowanie przerwan
+0111 3115             18                     ACALL RESET_BUFFER ; wywolaj funkcje resetu bufora
+0113 211A             19                     AJMP MAIN_LOOP ; skok do glownej petli
+                      20             
+0115                  21             RESET_BUFFER:
+0115 7820             22                     MOV R0, #beginTable ; inicjalizacja R0 wartoscia 20h, wskazujaca komorke pa
+                             mieci
+0117 7910             23                     MOV R1, #sizeTable ; inicjalizacja ilosci znakow do konca bufora
+0119 22               24                     RET
+                      25                     
+011A                  26             MAIN_LOOP:
+011A 80FE             27                     SJMP MAIN_LOOP ; oczekiwanie na znak
+                      28     
+011C                  29             UART_INTERRUPT:
+011C C0D0             30                     PUSH PSW ; zapamietanie waznych rejestrów na stosie PSW i ACC
+011E C0E0             31                     PUSH ACC
+                      32                     
+0120 109909           33                     JBC TI, END_INTERRUPT ; sprawdzenie powodu przerwania, jesli ustawiona flag
+                             a nadawania -
+                      34                                                               ; wyjdz z przerwania, jesli nie i
+                             dz dalej
+0123 C298             35                     CLR RI ; zerowanie bitu odbioru - RI
+0125 A699             36                     MOV @R0, SBUF ; przenies dane z SBUF do adresu wskazywanego przez R0    
+0127 08               37                     INC R0 ; podnies o jeden wartosc R0, ktora wskazuje komorke pamieci
+0128 D902             38                     DJNZ R1, END_INTERRUPT ; dekrementuj R1 i skacz jesli nie jest rowne 0 do k
+                             onca przerwania,
+                      39                                                                ; jesli nie idz dalej
+012A 3115             40                     ACALL RESET_BUFFER ; wywolaj funkcje resetu bufora
+                      41                     
+012C                  42                     END_INTERRUPT: ; wyslij, ze stosu, do ACC i PSW wartosci sprzed przerwania
+012C D0E0             43                     POP ACC
+012E D0D0             44                     POP PSW
+0130 32               45                     RETI
+                      46     END
+A51 MACRO ASSEMBLER  ZAD_5_0                                                              05/15/2021 15:55:36 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+ACC. . . . . . . .  D ADDR   00E0H   A   
+BEGINTABLE . . . .  N NUMB   0020H   A   
+EA . . . . . . . .  B ADDR   00A8H.7 A   
+END_INTERRUPT. . .  C ADDR   012CH   A   
+ES . . . . . . . .  B ADDR   00A8H.4 A   
+INIT . . . . . . .  C ADDR   0100H   A   
+MAIN_LOOP. . . . .  C ADDR   011AH   A   
+PSW. . . . . . . .  D ADDR   00D0H   A   
+RESET_BUFFER . . .  C ADDR   0115H   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+SIZETABLE. . . . .  N NUMB   0010H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+UART_INTERRUPT . .  C ADDR   011CH   A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)

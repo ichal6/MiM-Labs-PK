@@ -1,0 +1,55 @@
+A51 MACRO ASSEMBLER  UART                                                                 05/15/2021 14:21:18 PAGE     1
+
+
+MACRO ASSEMBLER A51 V8.2.7.0
+OBJECT MODULE PLACED IN .\Objects\uart.obj
+ASSEMBLER INVOKED BY: C:\Keil_v5\C51\BIN\A51.EXE uart.a51 SET(SMALL) DEBUG PRINT(.\Listings\uart.lst) OBJECT(.\Objects\u
+                      art.obj) EP
+
+LOC  OBJ            LINE     SOURCE
+
+----                   1     CSEG AT 0
+0000 0130              2     AJMP reset
+----                   3     CSEG AT 30h
+0030                   4     reset:
+0030 759850            5     MOV SCON,#50h ; uart w trybie 1 (8 bit), REN=1
+0033 758920            6     MOV TMOD,#20h ; licznik 1 w trybie 2
+0036 758DFD            7     MOV TH1,#0FDh ; 9600 Bds at 11.0592MHz
+0039 D28E              8     SETB TR1 ; uruchomienie licznika
+003B C299              9     CLR TI ; wyzerowanie flagi wyslania
+003D                  10     loop:
+003D 3098FD           11     JNB RI,$ ; sprawdzenie flagi odbioru
+0040 E599             12     MOV A,SBUF ; czytanie z uarta
+0042 C298             13     CLR RI ; zerowanie flagi odbioru
+0044 C2A0             14     CLR P2.0
+0046 04               15     INC A
+0047 F599             16     MOV SBUF,A ; zapis do uarta
+0049 3099FD           17     JNB TI,$ ; czekanie na opróznienie bufora nadajnika
+004C C299             18     CLR TI ; wyzerowanie flagi wyslania
+004E D2A0             19     SETB P2.0
+0050 013D             20     AJMP loop
+                      21     END
+A51 MACRO ASSEMBLER  UART                                                                 05/15/2021 14:21:18 PAGE     2
+
+SYMBOL TABLE LISTING
+------ ----- -------
+
+
+N A M E             T Y P E  V A L U E   ATTRIBUTES
+
+LOOP . . . . . . .  C ADDR   003DH   A   
+P2 . . . . . . . .  D ADDR   00A0H   A   
+RESET. . . . . . .  C ADDR   0030H   A   
+RI . . . . . . . .  B ADDR   0098H.0 A   
+SBUF . . . . . . .  D ADDR   0099H   A   
+SCON . . . . . . .  D ADDR   0098H   A   
+TH1. . . . . . . .  D ADDR   008DH   A   
+TI . . . . . . . .  B ADDR   0098H.1 A   
+TMOD . . . . . . .  D ADDR   0089H   A   
+TR1. . . . . . . .  B ADDR   0088H.6 A   
+
+
+REGISTER BANK(S) USED: 0 
+
+
+ASSEMBLY COMPLETE.  0 WARNING(S), 0 ERROR(S)
